@@ -14,6 +14,8 @@ module Cocoon
     # - *&block*:        the output of the block will be show in the link, see <tt>link_to</tt>
 
     def link_to_remove_association(*args, &block)
+      Rails.logger.debug "args.first = #{args.first}"
+      Rails.logger.debug "args.first.respond_to?(:object) = #{args.first.respond_to?(:object)}"
       if block_given?
         link_to_remove_association(capture(&block), *args)
       elsif args.first.respond_to?(:object)
